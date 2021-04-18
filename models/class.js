@@ -31,10 +31,4 @@ const ClassSchema = new mongoose.Schema({
     }
 });
 
-ClassSchema.statics.getCharacters = async function () {
-    return await mongoose.model('Character').find({ 
-        class: this._id 
-    });
-}
-
 module.exports = mongoose.model('Class', ClassSchema);

@@ -55,9 +55,10 @@ exports.show = async(request, responce, next) => {
     try{
         const { id } = request.params;
 
-        const character = await Character.findById(id).populate('class');
+        const character = await Character.findById(id).populate('Class');
+        const characterClass = await character.getClass();
 
-        responce.status(200).json(character);
+        responce.status(200).json({ ...character._doc, characterClass});
     } catch(error) {
         next(error);
     }

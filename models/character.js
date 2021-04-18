@@ -126,4 +126,10 @@ const abilityValidator = value => {
     return true;
 };
 
+CharacterSchema.methods.getClass = async function() {
+    return await mongoose.model('Class').find({
+        _id: this.characterClass
+    });
+}
+
 module.exports = mongoose.model('Character', CharacterSchema);
